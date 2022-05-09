@@ -31,7 +31,23 @@ Made changes to nginx.conf --old screenie below:
 ### Progress
 touch api_backends.conf
 
-    upstream warehouse_inventory changed to 
+    upstream warehouse_inventory changed to api/httpbin
 
 configured to backend docker hosting httpbin on 3 ports - 172.31.10.251:80/81/82  
 Pickup from *Single-Service vs. Microservice API Backends*
+
+2022-05-06
+touch httpbin_api_simple.conf  
+
+    # URI routing
+    # api_backends.conf
+    #
+    location /api/httpbin/ {
+        proxy_pass http://api_httpbin; #api_httpbin ref in api_backends.conf as a pool (i.e. backends)
+
+#### Next - rewrite API
+Logging setup in api_json_errors.conf
+
+httpbin_api_rerites.conf
+    plan is to rewrite arbitrary URL to correct URL
+    simple test in this example
